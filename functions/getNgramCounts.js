@@ -1,9 +1,17 @@
 exports.handler = (event, context, callback) => {
+  const headers = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Credentials": "true",
+    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Origin, Content-Type, Accept",
+  };
+
   // ##################   Helpers    ##################
   const send = (body) => {
     callback(null, {
       statusCode: 200,
       body: JSON.stringify(body),
+      headers: headers,
     });
   };
 
@@ -52,6 +60,7 @@ exports.handler = (event, context, callback) => {
     return callback(null, {
       statusCode: 400,
       errorMessage: "The request is missing data!",
+      headers: headers,
     });
 
   // ############   Check API call type    #############
