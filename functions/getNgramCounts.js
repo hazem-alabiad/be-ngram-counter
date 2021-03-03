@@ -55,7 +55,7 @@ exports.handler = (event, context, callback) => {
     });
 
   // ############   Check API call type    #############
-  if (event.httpMethod === "GET") {
+  if (event.httpMethod === "POST") {
     // get data from FE app by: event.body
     const { body, case_sensitive, ngram, length } = JSON.parse(event.body);
     send(getNgramCounts(body, case_sensitive, ngram, length));
